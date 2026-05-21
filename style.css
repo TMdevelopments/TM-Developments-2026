@@ -48,19 +48,28 @@ body {
 nav {
   position: fixed; 
   top: 1.5rem; 
-  left: 50%; 
-  transform: translateX(-50%);
-  width: calc(100% - 3rem); 
+  left: 1.5rem;
+  right: 1.5rem;
   max-width: 1100px;
+  width: auto;
+  margin: 0 auto;
   z-index: 1000;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0.6rem 2rem;
   height: 70px;
+  transition: var(--transition-smooth);
+}
+
+nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: rgba(8, 10, 15, 0.6);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 100px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  z-index: -1;
   transition: var(--transition-smooth);
 }
 
@@ -154,9 +163,10 @@ body.light-mode {
   --blue-glow: rgba(26,140,255,0.08);
 }
 
-body.light-mode nav {
+body.light-mode nav::before {
   background: rgba(255, 255, 255, 0.85);
   border-color: rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 body.light-mode .hero-bg {
@@ -832,7 +842,7 @@ footer {
 
 .loader-title {
   font-family: var(--font-display);
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 8vw, 3rem);
   letter-spacing: 0.2em;
   padding-left: 0.2em; /* Balance trailing letter-spacing for perfect centering */
   color: var(--white);
@@ -892,8 +902,9 @@ footer {
 /* === RESPONSIVE === */
 @media (max-width: 900px) {
   nav { 
-    width: calc(100% - 1.5rem); 
+    width: auto;
     left: 0.75rem;
+    right: 0.75rem;
     transform: none;
     top: 0.75rem; 
     padding: 0 1.2rem;
