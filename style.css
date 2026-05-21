@@ -842,9 +842,9 @@ footer {
 
 .loader-title {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 8vw, 3rem);
-  letter-spacing: 0.2em;
-  padding-left: 0.2em; /* Balance trailing letter-spacing for perfect centering */
+  font-size: clamp(1.1rem, 7vw, 2.8rem);
+  letter-spacing: 0.15em;
+  padding-left: 0.15em;
   color: var(--white);
   animation: pulse 1.5s ease-in-out infinite;
 }
@@ -909,6 +909,7 @@ footer {
     top: 0.75rem; 
     padding: 0 1.2rem;
     height: 60px;
+    overflow: visible;
   }
   .nav-items-wrapper { margin-left: 0; }
 
@@ -918,21 +919,22 @@ footer {
 
   .nav-items-wrapper {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100vh; /* Explicitly ensure full viewport height */
-    background: #000; /* Solid black background for full screen */
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--darker);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
     align-items: center;
     justify-content: center; /* Center items vertically for easier selection */
     padding: 0;
     transform: translateX(100%); /* Start off-screen */
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    z-index: 1000; /* Match or exceed nav z-index */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    z-index: 2000; 
     overflow-y: auto; /* Allow scrolling if many items */
     display: flex; /* Always flex on mobile, but hidden by transform/opacity/visibility */
+    pointer-events: none;
     visibility: hidden; /* Hidden by default */
     opacity: 0; /* Hidden by default */
   }
@@ -941,6 +943,7 @@ footer {
     transform: translateX(0); /* Slide in */
     visibility: visible; /* Show when active */
     opacity: 1; /* Show when active */
+    pointer-events: all;
   }
 
   .nav-items-wrapper .nav-links {
