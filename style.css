@@ -893,6 +893,8 @@ footer {
 @media (max-width: 900px) {
   nav { 
     width: calc(100% - 1.5rem); 
+    left: 0.75rem;
+    transform: none;
     top: 0.75rem; 
     padding: 0 1.2rem;
     height: 60px;
