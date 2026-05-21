@@ -911,6 +911,7 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
+    height: 100vh; /* Explicitly ensure full viewport height */
     background: #000; /* Solid black background for full screen */
     flex-direction: column;
     align-items: center;
