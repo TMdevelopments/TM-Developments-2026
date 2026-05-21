@@ -365,14 +365,14 @@
 
 <!-- =================== COOKIE POPUP =================== -->
 <div id="cookie-banner" class="cookie-banner">
-  <div class="label" style="margin-bottom: 0;">Cookie Consent</div>
+  <div class="cookie-title">Cookie Consent</div>
   <p class="cookie-text">
     We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
   </p>
   <div class="cookie-actions">
-    <button class="btn-primary cookie-btn" onclick="setCookieConsent('all')">Accept All</button>
-    <button class="btn-outline cookie-btn" onclick="setCookieConsent('essential')">Decline</button>
-    <button class="brand-link" onclick="showPage('cookies')" style="font-size: 0.65rem; margin-top: 0; cursor: pointer;">Cookie Policy</button>
+    <button class="btn-primary" onclick="setCookieConsent('all')">Accept All</button>
+    <button class="btn-outline" onclick="setCookieConsent('essential')">Decline</button>
+    <a onclick="showPage('cookies')" class="cookie-policy-link">Cookie Policy</a>
   </div>
 </div>
 
