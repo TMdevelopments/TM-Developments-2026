@@ -311,6 +311,71 @@
   </section>
 </div>
 
+<!-- =================== PRIVACY POLICY =================== -->
+<div id="page-privacy" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="label">Legal</div>
+      <h1 class="page-hero-title">PRIVACY<br><span class="blue">POLICY</span></h1>
+      <p class="page-hero-sub">How we handle and protect your data at TM Developments.</p>
+    </div>
+  </div>
+  <section class="about-card reveal">
+    <div style="max-width: 800px;">
+      <h2 class="brand-name" style="color: var(--blue);">1. Information Collection</h2>
+      <p class="section-body" style="margin-bottom: 2rem;">We collect information you provide directly to us via our contact form, including your name, email address, and message details. This is used solely to respond to your enquiries.</p>
+      
+      <h2 class="brand-name" style="color: var(--blue);">2. Use of Information</h2>
+      <p class="section-body" style="margin-bottom: 2rem;">Your information is used to provide support, process development requests, and communicate updates regarding our services. We do not sell or rent your personal data to third parties.</p>
+      
+      <h2 class="brand-name" style="color: var(--blue);">3. Security</h2>
+      <p class="section-body" style="margin-bottom: 2rem;">We implement industry-standard security measures to protect your data. However, no method of transmission over the internet is 100% secure.</p>
+      
+      <h2 class="brand-name" style="color: var(--blue);">4. Third-Party Services</h2>
+      <p class="section-body">Our website uses third-party services like Google reCAPTCHA and Web3Forms for security and form processing. These services have their own privacy policies regarding data handling.</p>
+    </div>
+  </section>
+</div>
+
+<!-- =================== COOKIES POLICY =================== -->
+<div id="page-cookies" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="label">Legal</div>
+      <h1 class="page-hero-title">COOKIES<br><span class="blue">POLICY</span></h1>
+      <p class="page-hero-sub">Understanding how we use cookies to improve your experience.</p>
+    </div>
+  </div>
+  <section class="about-card reveal">
+    <div style="max-width: 800px;">
+      <h2 class="brand-name" style="color: var(--blue);">What are Cookies?</h2>
+      <p class="section-body" style="margin-bottom: 2rem;">Cookies are small text files stored on your device when you visit a website. They help us remember your preferences and understand how you interact with our site.</p>
+      
+      <h2 class="brand-name" style="color: var(--blue);">How We Use Them</h2>
+      <ul class="section-body" style="list-style: none; margin-bottom: 2rem;">
+        <li style="margin-bottom: 0.8rem;"><span class="blue" style="font-weight:700;">– Essential:</span> Required for site functionality, such as theme persistence.</li>
+        <li style="margin-bottom: 0.8rem;"><span class="blue" style="font-weight:700;">– Analytics:</span> Help us understand visitor behavior to improve our content.</li>
+      </ul>
+      
+      <h2 class="brand-name" style="color: var(--blue);">Managing Preferences</h2>
+      <p class="section-body">You can choose to accept or decline cookies through our consent banner. Most web browsers also allow you to control cookies through their settings.</p>
+    </div>
+  </section>
+</div>
+
+<!-- =================== COOKIE POPUP =================== -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="label" style="margin-bottom: 0;">Cookie Consent</div>
+  <p class="cookie-text">
+    We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
+  </p>
+  <div class="cookie-actions">
+    <button class="btn-primary cookie-btn" onclick="setCookieConsent('all')">Accept All</button>
+    <button class="btn-outline cookie-btn" onclick="setCookieConsent('essential')">Decline</button>
+    <button class="brand-link" onclick="showPage('cookies')" style="font-size: 0.65rem; margin-top: 0; cursor: pointer;">Cookie Policy</button>
+  </div>
+</div>
+
 
 <!-- =================== CONTACT PAGE =================== -->
 <div id="page-contact" class="page">
@@ -416,6 +481,10 @@
   </div>
   <div class="footer-bottom">
     <div class="footer-copy">&copy; 2026 TM Developments &mdash; Website designed &amp; developed by TM Developments</div>
+    <div class="footer-bottom-links">
+      <a onclick="showPage('privacy')" style="cursor:pointer;">Privacy Policy</a>
+      <a onclick="showPage('cookies')" style="cursor:pointer;">Cookie Policy</a>
+    </div>
   </div>
 </footer>
 
@@ -473,6 +542,21 @@
       icon.classList.add('fa-sun');
     }
   });
+
+  // === COOKIE LOGIC ===
+  function checkCookieConsent() {
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) {
+      document.getElementById('cookie-banner').classList.add('show');
+    }
+  }
+
+  function setCookieConsent(type) {
+    localStorage.setItem('cookieConsent', type);
+    document.getElementById('cookie-banner').classList.remove('show');
+  }
+
+  window.addEventListener('DOMContentLoaded', checkCookieConsent);
 
   // === PAGE NAVIGATION (Global function) ===
   function showPage(name) {
